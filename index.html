@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AHT Group | A Vision for Progress. A Network for the Future.</title>
+<meta name="description" content="AHT Group brings together a healthcare technology company and institutions in healthcare education and school education.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+<style>
+/* ===== Design tokens (taken from the reference screenshots) ===== */
+:root{
+  --accent:#fe4f38;         /* coral buttons / dots / icons */
+  --accent-dark:#ea3d27;
+  --ink:#0a0a0a;
+  --muted:#666;
+  --soft:#9a9a9a;
+  --card:#f9f9f9;           /* program card / form panel bg */
+  --line:#e6e6e6;
+  --font:'Inter Tight',sans-serif;
+}
+*{letter-spacing:-.015em}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{font-family:var(--font);color:var(--ink);background:#fff;overflow-x:hidden;font-size:16px}
+a{text-decoration:none}
+.wrap{max-width:1420px;margin:0 auto;padding:0 24px}
+.wrap-hero{max-width:1480px;margin:0 auto;padding:0 24px}
+section{padding:100px 0}
+
+/* eyebrow + headings */
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:500;color:var(--ink);margin-bottom:14px}
+.eyebrow::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--accent)}
+.h2{font-weight:500;font-size:clamp(2rem,2.9vw,3rem);line-height:1.15;letter-spacing:-.025em;margin:0}
+
+/* button (coral, small radius, arrow icon) */
+.btn-atg{display:inline-flex;align-items:center;gap:10px;background:var(--accent);color:#fff;border:0;border-radius:6px;padding:14px 20px;font-family:var(--font);font-weight:600;font-size:15px;line-height:1;transition:background .25s}
+.btn-atg:hover{background:var(--accent-dark);color:#fff}
+.btn-atg i{font-size:15px}
+
+/* ===== Header ===== */
+.site-header{position:fixed;top:0;left:0;right:0;z-index:1000;padding:16px 16px 0;transition:padding .3s}
+.header-inner{border-bottom:1px solid rgba(255,255,255,.14);height:112px;display:flex;align-items:center;transition:.3s}
+.site-header.scrolled{padding:0}
+.site-header.scrolled .header-inner{background:#fff;height:76px;border-color:transparent;box-shadow:0 4px 24px rgba(0,0,0,.08)}
+.navbar{padding:0;width:100%}
+.brand{display:flex;align-items:center;gap:14px}
+.brand-mark{width:50px;height:50px;border-radius:50%;background:var(--accent);color:#fff;display:grid;place-items:center;font-weight:700;font-size:15px;letter-spacing:0}
+.brand-word{font-size:36px;font-weight:600;color:#fff;letter-spacing:-.04em;line-height:1}
+.brand-word span{color:var(--accent)}
+.site-header.scrolled .brand-word{color:var(--ink)}
+.navbar-nav{gap:8px}
+@media(max-width:1199px){.navbar .nav-link{padding:8px 10px!important}}
+.navbar .nav-link{color:#fff;font-weight:500;font-size:15px;padding:8px 18px!important;transition:color .2s}
+.navbar .nav-link:hover,.navbar .nav-link.active{color:var(--accent)}
+.site-header.scrolled .nav-link{color:var(--ink)}
+.site-header.scrolled .nav-link:hover,.site-header.scrolled .nav-link.active{color:var(--accent)}
+.navbar-toggler{border:1px solid rgba(255,255,255,.5);color:#fff;padding:6px 10px;border-radius:6px}
+.navbar-toggler:focus{box-shadow:0 0 0 3px rgba(254,79,56,.35)}
+.site-header.scrolled .navbar-toggler{color:var(--ink);border-color:#ccc}
+@media(max-width:991px){
+  .header-inner{height:84px}
+  .brand-word{font-size:28px}.brand-mark{width:42px;height:42px;font-size:13px}
+  .navbar-collapse{position:absolute;top:84px;left:0;right:0;background:#111;border-radius:16px;padding:18px;margin:0 8px}
+  .site-header.scrolled .navbar-collapse{top:76px}
+  .navbar-collapse .nav-link{color:#fff!important}
+  .navbar-collapse .btn-atg{margin-top:10px}
+}
+
+/* ===== Hero ===== */
+.hero-outer{padding:16px}
+.hero{position:relative;border-radius:28px;overflow:hidden;min-height:826px;display:flex;align-items:flex-end;background:#1b2218;color:#fff}
+.hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.25) 0%,rgba(0,0,0,.3) 45%,rgba(0,0,0,.62) 100%)}
+.hero .wrap-hero{position:relative;z-index:2;width:100%;padding-bottom:24px;padding-top:150px}
+.chip{display:inline-flex;align-items:center;gap:9px;background:rgba(255,255,255,.2);backdrop-filter:blur(6px);padding:7px 15px;border-radius:10px;font-size:14px;font-weight:500;margin-bottom:20px}
+.chip::before{content:"";width:6px;height:6px;border-radius:50%;background:#fff}
+.hero h1{font-weight:500;font-size:clamp(2.6rem,4.2vw,5rem);line-height:1.1;letter-spacing:-.035em;margin:0 0 22px;max-width:900px}
+.hero p{font-size:16px;font-weight:500;line-height:1.55;max-width:840px;margin:0 0 38px;letter-spacing:-.02em}
+.hero-cards{display:flex;flex-direction:column;gap:11px;width:100%;max-width:352px;margin-left:auto}
+.hcard{background:rgba(70,70,64,.55);backdrop-filter:blur(14px);border-radius:20px;padding:24px 30px;border:1px solid rgba(255,255,255,.06)}
+.hcard-1{display:flex;align-items:center;gap:10px;padding:26px 30px}
+.hcard-1 b{font-size:40px;font-weight:500;line-height:1}
+.hcard-1 .st{color:var(--accent);font-size:20px}
+.hcard-1 span.t{font-size:20px;font-weight:500}
+.hcard-2 .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:34px}
+.avs{display:flex}
+.av{width:42px;height:42px;border-radius:50%;background:#fff;color:#111;border:2px solid #fff;margin-left:-10px;display:grid;place-items:center;overflow:hidden;font-size:11px;font-weight:700}
+.av:first-child{margin-left:0}
+.av img{width:100%;height:100%;object-fit:contain;padding:4px}
+.av.noimg::after{content:attr(data-i)}
+.arrow-c{width:40px;height:40px;border:1px solid #fff;border-radius:50%;display:grid;place-items:center;color:#fff;transition:.25s}
+.arrow-c:hover{background:#fff;color:#111}
+.hcard-2 .big{font-size:52px;font-weight:500;line-height:1;letter-spacing:-.03em}
+.hcard-2 .lbl{font-size:20px;font-weight:500;margin-top:12px;line-height:1.25}
+@media(max-width:991px){.hero{min-height:720px}.hero-cards{margin:32px 0 0;max-width:100%}.hero .wrap-hero{padding-top:130px}}
+@media(max-width:575px){.hero{min-height:0;border-radius:20px}.hcard-1 b{font-size:32px}.hcard-1 span.t{font-size:16px}.hcard-2 .big{font-size:42px}.hcard-2 .lbl{font-size:17px}}
+
+/* ===== About ===== */
+#about{padding:90px 0 70px}
+.about-top{display:flex;justify-content:space-between;align-items:flex-start;gap:30px}
+.about-h{font-weight:400;font-size:clamp(1.8rem,3vw,2.9rem);line-height:1.2;letter-spacing:-.025em;max-width:760px;margin:0}
+.pill{display:inline-flex;align-items:center;gap:10px;background:#f1f1f1;border-radius:999px;padding:12px 20px;font-size:14px;font-weight:500;white-space:nowrap;color:#333}
+.pill::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--accent)}
+.about-p{color:#666;font-size:15px;line-height:1.7;max-width:760px;margin:28px 0 56px}
+.stat-n{font-size:clamp(2.6rem,3.6vw,3.4rem);font-weight:400;line-height:1;letter-spacing:-.03em}
+.stat-l{color:var(--soft);font-size:13px;line-height:1.6;margin-top:16px;max-width:240px}
+@media(max-width:767px){.about-top{flex-direction:column}}
+
+/* ===== Our Institutions (reuses the "Our Program" card UI) ===== */
+.sec-head{text-align:center;margin-bottom:64px}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:28px}
+@media(max-width:1199px){.grid4{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:640px){.grid4{grid-template-columns:1fr}}
+.grid3c{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+@media(max-width:991px){.grid3c{grid-template-columns:repeat(2,1fr)}.grid3c .pcard:last-child:nth-child(odd){grid-column:1/-1;max-width:calc(50% - 14px);justify-self:center;width:100%}}
+@media(max-width:640px){.grid3c{grid-template-columns:1fr}.grid3c .pcard:last-child:nth-child(odd){max-width:none}}
+.pcard{display:flex;flex-direction:column;background:var(--card);border-radius:28px;padding:38px 38px 34px;color:var(--ink);transition:transform .3s,box-shadow .3s}
+.pcard:hover{color:var(--ink);transform:translateY(-4px);box-shadow:0 14px 34px rgba(0,0,0,.06)}
+.pcard:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.pimg{height:170px;display:flex;align-items:center;justify-content:center;margin-bottom:56px}
+.pimg img{max-width:100%;max-height:150px;width:auto;height:auto;object-fit:contain;mix-blend-mode:multiply;transition:transform .4s}
+.pcard:hover .pimg img{transform:scale(1.04)}
+.logo-fallback{font-size:26px;font-weight:600;text-align:center;line-height:1.2;color:#222}
+.pcard h3{font-size:20px;font-weight:500;margin:0 0 12px;letter-spacing:-.02em}
+.pcard p{color:var(--muted);font-size:15px;line-height:1.6;margin:0 0 30px;flex-grow:1}
+.pcard-wide{flex-direction:row;align-items:center;gap:56px;max-width:1060px;margin:0 auto}
+.pcard-wide .pimg{flex:0 0 38%;margin:0;height:auto;min-height:170px}
+.pcard-wide .pbody{flex:1;display:flex;flex-direction:column}
+.pcard-wide h3{font-size:clamp(1.5rem,2vw,2rem);letter-spacing:-.025em}
+.pcard-wide p{flex-grow:0;font-size:16px}
+@media(max-width:767px){.pcard-wide{flex-direction:column;align-items:stretch;gap:32px}.pcard-wide .pimg{flex:none}}
+.pmore{border-top:1px solid var(--line);padding-top:24px;font-weight:600;font-size:15px;display:flex;align-items:center;gap:8px}
+.pmore i{font-size:13px}
+.pcard:hover .pmore i{color:var(--accent)}
+
+/* ===== Founders (same card system) ===== */
+#founders{padding-top:30px}
+.sub-p{color:var(--muted);font-size:16px;line-height:1.6;max-width:640px;margin:18px auto 0}
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,380px));gap:28px;justify-content:center}
+@media(max-width:767px){.grid2{grid-template-columns:1fr}}
+.fcard{background:var(--card);border-radius:28px;padding:38px 38px 34px}
+.fimg{aspect-ratio:1/1;border-radius:20px;overflow:hidden;background:#ececec;margin-bottom:30px}
+.fimg img{width:100%;height:100%;object-fit:cover;object-position:center 20%;display:block}
+.fcard h3{font-size:20px;font-weight:500;margin:0 0 6px}
+.fcard .role{font-size:14px;font-weight:500;color:var(--accent);margin-bottom:14px}
+.fcard p{color:var(--muted);font-size:15px;line-height:1.6;margin:0}
+
+/* ===== Contact (same as appointment layout) ===== */
+#contact{padding-top:40px}
+.cgrid{display:grid;grid-template-columns:842fr 580fr;gap:46px;align-items:center}
+@media(max-width:991px){.cgrid{grid-template-columns:1fr}}
+.fpanel{background:var(--card);border-radius:30px;padding:60px}
+.fpanel h3{font-size:clamp(2rem,2.9vw,3rem);font-weight:500;letter-spacing:-.03em;margin:0 0 44px}
+.fgrid{display:grid;grid-template-columns:1fr 1fr;gap:24px 30px}
+.fgrid .full{grid-column:1/-1}
+.fpanel .form-control,.fpanel .form-select{background-color:#fff;border:1px solid transparent;border-radius:12px;height:58px;padding:0 20px;font-family:var(--font);font-size:15px;color:#333;box-shadow:none}
+.fpanel textarea.form-control{height:155px;padding:20px;resize:vertical}
+.fpanel .form-control::placeholder{color:#666}
+.fpanel .form-control:focus,.fpanel .form-select:focus{border-color:var(--accent)}
+.fpanel .is-invalid{border-color:#dc3545!important;background-image:none}
+.invalid-feedback{font-size:12.5px}
+#formStatus{border-radius:12px;font-size:14px;margin:0}
+.fbtn{margin-top:36px}
+.fbtn .btn-atg{padding:18px 20px}
+.fbtn .btn-atg:disabled{opacity:.7}
+@media(max-width:575px){.fpanel{padding:28px}.fgrid{grid-template-columns:1fr}}
+.c-p{color:var(--muted);font-size:16px;line-height:1.6;margin:22px 0 38px}
+.c-hr{border:0;border-top:1px solid var(--line);margin:0 0 38px}
+.cinfo{display:grid;grid-template-columns:1fr 1fr;gap:34px 28px}
+@media(max-width:575px){.cinfo{grid-template-columns:1fr}}
+.ci{display:flex;gap:14px;align-items:flex-start}
+.ci .ic{flex:0 0 50px;width:50px;height:50px;border-radius:50%;background:var(--accent);color:#fff;display:grid;place-items:center;font-size:20px}
+.ci h4{font-size:20px;font-weight:500;margin:0 0 6px}
+.ci span{color:var(--muted);font-size:15px;line-height:1.5;display:block}
+
+/* ===== Footer ===== */
+footer{background:#0a0a0a;color:#bdbdbd;padding:80px 0 28px}
+footer .brand-word{color:#fff}
+footer h4{color:#fff;font-size:18px;font-weight:500;margin:0 0 20px}
+footer ul{list-style:none;padding:0;margin:0}
+footer li{margin-bottom:12px;font-size:15px}
+footer a{color:#bdbdbd;transition:color .2s}
+footer a:hover{color:var(--accent)}
+.fgrid3{display:grid;grid-template-columns:1.6fr 1fr 1.2fr;gap:48px}
+@media(max-width:767px){.fgrid3{grid-template-columns:1fr;gap:36px}}
+.fbot{border-top:1px solid rgba(255,255,255,.12);margin-top:56px;padding-top:24px;text-align:center;font-size:14px}
+
+/* ===== Animations ===== */
+.fade{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
+.fade.in{opacity:1;transform:none}
+.hero .fade{animation:none}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.fade{opacity:1;transform:none;transition:none}*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<!-- ================= HEADER ================= -->
+<header class="site-header" id="siteHeader">
+  <div class="header-inner">
+    <div class="wrap-hero w-100">
+      <nav class="navbar navbar-expand-lg" aria-label="Main navigation">
+        <!-- Replace with real AHT logo: <img src="assets/logos/aht-group.png" alt="AHT Group" height="48"> -->
+        <a class="brand" href="#home" aria-label="AHT Group home">
+          <span class="brand-mark">AHT</span>
+          <span class="brand-word">aht group<span>.</span></span>
+        </a>
+        <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#nav" aria-controls="nav" aria-expanded="false" aria-label="Toggle navigation"><i class="bi bi-list fs-4"></i></button>
+        <div class="collapse navbar-collapse" id="nav">
+          <ul class="navbar-nav mx-auto">
+            <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="#about">About Us</a></li>
+            <li class="nav-item"><a class="nav-link" href="#institutions">Our Institutions</a></li>
+            <li class="nav-item"><a class="nav-link" href="#company">Our Company</a></li>
+            <li class="nav-item"><a class="nav-link" href="#founders">Founders</a></li>
+            <li class="nav-item"><a class="nav-link" href="#contact">Contact Us</a></li>
+          </ul>
+          <a href="#institutions" class="btn-atg">Explore Our Network <i class="bi bi-arrow-up-right"></i></a>
+        </div>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<main>
+<!-- ================= HERO ================= -->
+<div class="hero-outer" id="home">
+  <div class="hero">
+    <!-- Hero photo: assets/img/hero.jpg -->
+    <img class="hero-bg" src="assets/img/hero.jpg" alt="" aria-hidden="true" onerror="this.remove()">
+    <div class="wrap-hero">
+      <div class="row align-items-end g-0">
+        <div class="col-lg-8 fade">
+          <span class="chip">One Group. Four Organizations.</span>
+          <h1>A Vision for Progress. A Network for the Future.</h1>
+          <p>AHT Group brings together a healthcare technology company and institutions in healthcare education and school education, united by a shared commitment to quality, learning, and progress.</p>
+          <a href="#institutions" class="btn-atg">Explore Our Institutions <i class="bi bi-arrow-up-right"></i></a>
+        </div>
+        <div class="col-lg-4 fade">
+          <div class="hero-cards">
+            <div class="hcard hcard-1"><b>4</b><i class="bi bi-star-fill st"></i><span class="t">Organizations in Our Network</span></div>
+            <div class="hcard hcard-2">
+              <div class="top">
+                <div class="avs">
+                  <span class="av" data-i="AH"><img src="assets/logos/arnica.png" alt=""></span>
+                  <span class="av" data-i="JS"><img src="assets/logos/jsm.png" alt=""></span>
+                  <span class="av" data-i="AC"><img src="assets/logos/aht.png" alt=""></span>
+                  <span class="av" data-i="GM"><img src="assets/logos/gmic.png" alt=""></span>
+                </div>
+                <a href="#institutions" class="arrow-c" aria-label="View Our Institutions"><i class="bi bi-arrow-up-right"></i></a>
+              </div>
+              <div class="big">3 Sectors</div>
+              <div class="lbl">Healthcare Technology, Healthcare Education &amp; School Education</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ================= ABOUT + STATS ================= -->
+<section id="about">
+  <div class="wrap">
+    <div class="about-top fade">
+      <h2 class="about-h">We are a network of organizations committed to building opportunities through healthcare technology and education.</h2>
+      <span class="pill">4 organizations, one shared vision</span>
+    </div>
+    <p class="about-p fade">AHT Group's vision is to connect specialized expertise with meaningful opportunities. Our mission is to support quality, innovation, and skill development across healthcare technology, healthcare education, and school education, while each organization continues to serve its own community with its own identity.</p>
+    <!-- Verified numbers only. Edit / add real group data when available. -->
+    <div class="row g-4 fade">
+      <div class="col-6 col-lg-3"><div class="stat-n"><span data-count="4">4</span></div><div class="stat-l">Organizations in the AHT Group network</div></div>
+      <div class="col-6 col-lg-3"><div class="stat-n"><span data-count="3">3</span></div><div class="stat-l">Institutions in healthcare education and school education</div></div>
+      <div class="col-6 col-lg-3"><div class="stat-n"><span data-count="1">1</span></div><div class="stat-l">Company in healthcare technology and medical imaging</div></div>
+      <div class="col-6 col-lg-3"><div class="stat-n"><span data-count="1">1</span></div><div class="stat-l">Shared vision for quality, learning and progress</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= OUR INSTITUTIONS ================= -->
+<section id="institutions">
+  <div class="wrap">
+    <div class="sec-head fade">
+      <span class="eyebrow">Our Network</span>
+      <h2 class="h2">Our Institutions</h2>
+    </div>
+    <div class="grid3c">
+      <a class="pcard fade" href="https://www.jsmsrsecschool.com/" target="_blank" rel="noopener noreferrer" aria-label="JSM SR. Sec. School, explore institution (opens in a new tab)">
+        <div class="pimg"><img src="assets/logos/jsm.png" alt="JSM SR. Sec. School logo" data-fallback="JSM SR. Sec. School"></div>
+        <h3>JSM SR. Sec. School</h3>
+        <p>An educational institution focused on academic learning, student development, and building a strong foundation for the future.</p>
+        <span class="pmore">Explore Institution <i class="bi bi-arrow-up-right"></i></span>
+      </a>
+      <a class="pcard fade" href="https://ahtcollege.com/" target="_blank" rel="noopener noreferrer" aria-label="AHT College, explore institution (opens in a new tab)">
+        <div class="pimg"><img src="assets/logos/aht.png" alt="AHT College logo" data-fallback="AHT College"></div>
+        <h3>AHT College</h3>
+        <p>Healthcare and paramedical education focused on practical learning and professional development.</p>
+        <span class="pmore">Explore Institution <i class="bi bi-arrow-up-right"></i></span>
+      </a>
+      <a class="pcard fade" href="https://gmicbathain.com/" target="_blank" rel="noopener noreferrer" aria-label="GMIC Bathain, explore institution (opens in a new tab)">
+        <div class="pimg"><img src="assets/logos/gmic.png" alt="GMIC Bathain logo" data-fallback="GMIC Bathain"></div>
+        <h3>GMIC Bathain</h3>
+        <p>An educational institution dedicated to academic development, learning, and student growth.</p>
+        <span class="pmore">Explore Institution <i class="bi bi-arrow-up-right"></i></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= OUR COMPANY ================= -->
+<section id="company" style="padding-top:20px">
+  <div class="wrap">
+    <div class="sec-head fade">
+      <span class="eyebrow">Healthcare Technology</span>
+      <h2 class="h2">Our Company</h2>
+    </div>
+    <a class="pcard pcard-wide fade" href="https://www.arnicahealthtech.com/" target="_blank" rel="noopener noreferrer" aria-label="Arnica HealthTech, explore company (opens in a new tab)">
+      <div class="pimg"><img src="assets/logos/arnica.png" alt="Arnica HealthTech logo" data-fallback="Arnica HealthTech"></div>
+      <div class="pbody">
+        <h3>Arnica HealthTech</h3>
+        <p>Healthcare technology and medical imaging solutions, including MRI and CT equipment, installation, refurbishment, and technical support.</p>
+        <span class="pmore">Explore Company <i class="bi bi-arrow-up-right"></i></span>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- ================= FOUNDERS ================= -->
+<section id="founders">
+  <div class="wrap">
+    <div class="sec-head fade" style="margin-bottom:56px">
+      <span class="eyebrow">The Vision Behind AHT Group</span>
+      <h2 class="h2">Meet Our Founders</h2>
+      <p class="sub-p">Meet the people driving our vision forward through leadership, dedication, and a commitment to building opportunities across our network of organizations.</p>
+    </div>
+    <div class="grid2">
+      <article class="fcard fade">
+        <div class="fimg"><img src="assets/img/founder-1.jpg" alt="Dr. Kavita Mehlawat" data-founder></div>
+        <h3>Dr. Kavita Mehlawat</h3>
+        <div class="role">Director of the Company</div>
+        <p>Guiding the company with a focus on quality, dependable service, and long-term growth.</p>
+      </article>
+      <article class="fcard fade">
+        <div class="fimg"><img src="assets/img/founder-2.jpg" alt="Mr. Bhagat Singh" data-founder></div>
+        <h3>Mr. Bhagat Singh</h3>
+        <div class="role">Director of the Company</div>
+        <p>Driving growth and excellence in healthcare equipment solutions, with a commitment to delivering world-class diagnostic imaging technology pan-India.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section id="contact">
+  <div class="wrap">
+    <div class="cgrid">
+      <div class="fpanel fade">
+        <h3>Send an Inquiry</h3>
+        <form id="inquiryForm" novalidate>
+          <div class="fgrid">
+            <div><input type="text" id="fName" name="name" class="form-control" placeholder="Enter Full Name *" aria-label="Full name" required autocomplete="name"><div class="invalid-feedback">Please enter your name.</div></div>
+            <div><input type="email" id="fEmail" name="email" class="form-control" placeholder="Enter Email Address *" aria-label="Email address" required autocomplete="email"><div class="invalid-feedback">Please enter a valid email.</div></div>
+            <div><input type="tel" id="fPhone" name="phone" class="form-control" placeholder="Enter Phone Number" aria-label="Phone number" autocomplete="tel" pattern="[0-9+\-\s]{7,15}"><div class="invalid-feedback">Enter a valid phone number.</div></div>
+            <div><select id="fInst" name="institution" class="form-select" aria-label="Institution or company of interest" required>
+              <option value="">Select an Institution / Company *</option>
+              <option>Arnica HealthTech</option><option>JSM SR. Sec. School</option><option>AHT College</option><option>GMIC Bathain</option>
+            </select><div class="invalid-feedback">Please select an institution.</div></div>
+            <div class="full"><textarea id="fMsg" name="message" class="form-control" placeholder="Any Additional Message..." aria-label="Message" required minlength="10"></textarea><div class="invalid-feedback">Please write at least 10 characters.</div></div>
+            <input type="text" name="website" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true">
+            <div class="full"><div id="formStatus" class="d-none" role="status" aria-live="polite"></div></div>
+          </div>
+          <div class="fbtn"><button type="submit" class="btn-atg" id="submitBtn"><span class="bt">Send Inquiry</span> <i class="bi bi-arrow-up-right"></i></button></div>
+        </form>
+      </div>
+      <div class="fade">
+        <span class="eyebrow">Get In Touch</span>
+        <h2 class="h2">Let's build a better future together</h2>
+        <p class="c-p">Have a question about our network or interested in connecting with one of our organizations? Get in touch to find the right place to start.</p>
+        <hr class="c-hr">
+        <!-- Placeholders: replace with verified AHT Group details -->
+        <div class="cinfo">
+          <div class="ci"><div class="ic"><i class="bi bi-telephone"></i></div><div><h4>Contact Us</h4><span>+91 00000 00000</span></div></div>
+          <div class="ci"><div class="ic"><i class="bi bi-envelope"></i></div><div><h4>E-mail Address</h4><span>info@yourdomain.com</span></div></div>
+          <div class="ci"><div class="ic"><i class="bi bi-geo-alt"></i></div><div><h4>Location</h4><span>Your office address here</span></div></div>
+          <div class="ci"><div class="ic"><i class="bi bi-clock"></i></div><div><h4>Hours</h4><span>Mon-Sat: 00:00 - 00:00</span></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="wrap">
+    <div class="fgrid3">
+      <div>
+        <a class="brand" href="#home"><span class="brand-mark">AHT</span><span class="brand-word">aht group<span>.</span></span></a>
+        <p class="mt-4" style="max-width:400px;font-size:15px;line-height:1.7">A healthcare technology company and institutions in healthcare education and school education, united by a shared commitment to quality, learning, and progress.</p>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#home">Home</a></li><li><a href="#about">About Us</a></li><li><a href="#institutions">Our Institutions</a></li><li><a href="#company">Our Company</a></li><li><a href="#founders">Founders</a></li><li><a href="#contact">Contact Us</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Our Institutions</h4>
+        <ul>
+          <li><a href="https://www.jsmsrsecschool.com/" target="_blank" rel="noopener noreferrer">JSM SR. Sec. School</a></li>
+          <li><a href="https://ahtcollege.com/" target="_blank" rel="noopener noreferrer">AHT College</a></li>
+          <li><a href="https://gmicbathain.com/" target="_blank" rel="noopener noreferrer">GMIC Bathain</a></li>
+        </ul>
+        <h4 style="margin-top:28px">Our Company</h4>
+        <ul>
+          <li><a href="https://www.arnicahealthtech.com/" target="_blank" rel="noopener noreferrer">Arnica HealthTech</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="fbot">&copy; <span id="year"></span> AHT Group. All rights reserved.</div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/bootstrap.bundle.min.js"></script>
+<script>
+(function(){
+  var FORM_ENDPOINT = ""; // set to your PHP / email handler, e.g. "send-inquiry.php"
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  /* sticky header */
+  var header = document.getElementById('siteHeader');
+  function sc(){ header.classList.toggle('scrolled', window.scrollY > 60); }
+  sc(); window.addEventListener('scroll', sc, {passive:true});
+
+  /* close mobile menu on click */
+  document.querySelectorAll('#nav a').forEach(function(a){
+    a.addEventListener('click', function(){
+      var el = document.getElementById('nav');
+      if(el.classList.contains('show')) bootstrap.Collapse.getOrCreateInstance(el).hide();
+    });
+  });
+
+  /* active link */
+  var links = document.querySelectorAll('.navbar .nav-link');
+  var spy = new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ links.forEach(function(l){ l.classList.toggle('active', l.getAttribute('href') === '#'+e.target.id); }); } });
+  }, {rootMargin:'-45% 0px -50% 0px'});
+  ['home','about','institutions','company','founders','contact'].forEach(function(id){ var s=document.getElementById(id); s && spy.observe(s); });
+  document.querySelector('.navbar .nav-link').classList.add('active');
+
+  /* fade-in + counters */
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } }); }, {threshold:.1});
+  document.querySelectorAll('.fade').forEach(function(el,i){ el.style.transitionDelay = (el.classList.contains('pcard') ? (i%4)*80 : 0)+'ms'; io.observe(el); });
+  var cio = new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(!e.isIntersecting) return; cio.unobserve(e.target);
+      var end = +e.target.dataset.count; if(reduce){ e.target.textContent = end; return; }
+      var t0 = null; (function step(ts){ t0 = t0 || ts; var p = Math.min((ts-t0)/1200,1); e.target.textContent = Math.round(end*p); if(p<1) requestAnimationFrame(step); })(performance.now());
+    });
+  }, {threshold:.6});
+  document.querySelectorAll('[data-count]').forEach(function(el){ cio.observe(el); });
+
+  /* missing logos -> show institution name; hero avatars -> initials */
+  function logoFail(img){ var s=document.createElement('span'); s.className='logo-fallback'; s.textContent=img.dataset.fallback; img.replaceWith(s); }
+  document.querySelectorAll('img[data-fallback]').forEach(function(img){
+    if(img.complete && img.naturalWidth===0) logoFail(img); else img.addEventListener('error', function(){ logoFail(img); });
+  });
+  document.querySelectorAll('.av img').forEach(function(img){
+    function f(){ img.parentNode.classList.add('noimg'); img.remove(); }
+    if(img.complete && img.naturalWidth===0) f(); else img.addEventListener('error', f);
+  });
+  /* founder placeholder portrait */
+  var ph = 'data:image/svg+xml;utf8,'+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400"><rect width="400" height="400" fill="#ececec"/><circle cx="200" cy="160" r="70" fill="#c9c9c9"/><path d="M60 400c0-90 62-140 140-140s140 50 140 140z" fill="#c9c9c9"/></svg>');
+  document.querySelectorAll('img[data-founder]').forEach(function(img){
+    function f(){ img.src = ph; }
+    if(img.complete && img.naturalWidth===0) f(); else img.addEventListener('error', f, {once:true});
+  });
+
+  /* contact form */
+  var form = document.getElementById('inquiryForm'), st = document.getElementById('formStatus'), btn = document.getElementById('submitBtn');
+  function show(t,m){ st.className='alert alert-'+t; st.textContent=m; }
+  form.addEventListener('submit', function(ev){
+    ev.preventDefault(); if(form.website.value) return;
+    var ok = true;
+    form.querySelectorAll('input.form-control, select, textarea').forEach(function(f){
+      if(f.name==='website') return;
+      var v = f.value.trim(), valid = f.checkValidity() && (!f.required || v!=='');
+      if(f.id==='fPhone' && v==='') valid = true;
+      f.classList.toggle('is-invalid', !valid); if(!valid) ok = false;
+    });
+    if(!ok){ show('danger','Please fix the highlighted fields and try again.'); return; }
+    if(!FORM_ENDPOINT){ show('info','Form is validated but not connected to a backend or email service yet, so nothing was sent.'); return; }
+    btn.disabled = true; btn.querySelector('.bt').textContent = 'Sending...';
+    fetch(FORM_ENDPOINT,{method:'POST',body:new FormData(form)})
+      .then(function(r){ if(!r.ok) throw 0; })
+      .then(function(){ show('success','Thank you! Your inquiry has been sent.'); form.reset(); })
+      .catch(function(){ show('danger','Something went wrong. Please try again later.'); })
+      .finally(function(){ btn.disabled=false; btn.querySelector('.bt').textContent='Send Inquiry'; });
+  });
+  form.addEventListener('input', function(e){ e.target.classList.remove('is-invalid'); });
+})();
+</script>
+</body>
+</html>
